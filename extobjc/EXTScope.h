@@ -28,9 +28,9 @@
  * (like a one line \c if). In practice, this is not an issue, since \@onExit is
  * a useless construct in such a case anyways.
  */
-#define onExit \
-    try {} @finally {} \
-    __strong ext_cleanupBlock_t metamacro_concat(ext_exitBlock_, __LINE__) __attribute__((cleanup(ext_executeCleanupBlock), unused)) = ^
+//#define onExit \
+//    try {} @finally {} \
+//    __strong ext_cleanupBlock_t metamacro_concat(ext_exitBlock_, __LINE__) __attribute__((cleanup(ext_executeCleanupBlock), unused)) = ^
 
 /**
  * Creates \c __weak shadow variables for each of the variables provided as
@@ -88,9 +88,9 @@
     _Pragma("clang diagnostic pop")
 
 /*** implementation details follow ***/
-typedef void (^ext_cleanupBlock_t)();
+//typedef void (^ext_cleanupBlock_t)();
 
-void ext_executeCleanupBlock (__strong ext_cleanupBlock_t *block);
+//void ext_executeCleanupBlock (__strong ext_cleanupBlock_t *block);
 
 #define ext_weakify_(INDEX, CONTEXT, VAR) \
     CONTEXT __typeof__(VAR) metamacro_concat(VAR, _weak_) = (VAR);
